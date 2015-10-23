@@ -15,30 +15,36 @@ $args = array();
 $results = $client->__soapCall('qSchools', $args);
 $schools = $results->data;
 
-foreach ($schools as $school) {
-    $schoolid = $school[0];
-    echo "$schoolid\n";
+//foreach ($schools as $school) {
+    $schoolid = 'EGR'; //$school[0]; //EGR is the schoolid for the School of Engineering
+    echo "$schoolid -> ";
 
     $args = array('schoolid' => $schoolid);
     $results = $client->__soapCall('qSubjects', $args);
     $subjects = $results->data;
 
     foreach($subjects as $subject) {
-	$subjectid = $subject[0];
+		$subjectid = $subject[0]; //qSubjects contains the different subjects in EGR i.e. COEN, ELEN, MECH, etc.
 
-	echo "$subjectid\n";
-	$args = array('subjectid' => $subjectid, 'term' => $term);
-	$results = $client->__soapCall('qCourses', $args);
-	$courses = $results->data;
+		echo "	$subjectid\n";
+		$args = array('subjectid' => $subjectid, 'term' => $term);
+		$results = $client->__soapCall('qCourses', $args);
+		$courses = $results->data;
 
-	foreach ($courses as $course) {
-	    print_r($course);
-	    $courseid = $course[5];
+		foreach ($courses as $course) {
+			if($course[2] == "Graduate Engineering") { continue; } //filters out graduate courses
 
-	    $args = array('courseid' => $courseid, 'term' => $term);
-	    $results = $client->__soapCall('qCourse', $args);
-	    print_r($results);
-	}
+		    print_r($course); //recursively prints array of course information
+		    $courseid = $course[5]; //index 5 contains the course ID number unique to that particular course topic within the department  
+		    //echo "$courseid\n";
+
+		    //this retrieves information for sections offered during the particular term
+		    // $args = array('courseid' => $courseid, 'term' => $term);
+		    // $results = $client->__soapCall('qCourse', $args);
+		    // print_r($results);
+		}
+		echo "\n";
     }
-}
+    echo "\n";
+//}
 ?>
