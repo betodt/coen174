@@ -10,54 +10,71 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" type="text/css" href="student_form.css"/>
   <style type="text/css">
-  body{
-    width: 90%;
-    margin: auto;
-  }
-  body > div:first-child {
-    padding: 10px;
-  }
+    body{
+     width: 90%;
+      margin: auto;
+    }
+    body > div:first-child {
+      padding: 10px;
+    }
   </style>
 </head>
-<body>
- <div class="jumbotron">
-  <h1>Santa Clara University</br><small>Waitlist<br><small>Student portal</small></small></h1>
-</div>
-<div class="input-group">
-  <input type="text" class="form-control" placeholder="First Name" aria-describedby="basic-addon1">
-</div>
-<br>
-<div class="input-group">
-  <input type="text" class="form-control" placeholder="Last Name" aria-describedby="basic-addon1">
-</div>
-<br>
-<div class="input-group">
-  <input type="text" class="form-control" placeholder="ID number ex: W0XXXXXX" aria-describedby="basic-addon1">
-</div>
-<br>
-<div class="input-group">
-  <input type="text" class="form-control" placeholder="username@email.com" aria-describedby="basic-addon1">
-</div>
-<br>
-<div class="input-group">
-  <input type="text" class="form-control" placeholder="reason to waitlist" aria-describedby="basic-addon1">
-</div>
-<br>
-<div class="dropdown">
-  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select the course you wish to waitlist <span class="caret"></span></button>
-  <ul class="dropdown-menu">
-    <li><a href="#">COEN 12</a></li>
-    <li><a href="#">COEN 160</a></li>
-    <li><a href="#">COEN 161</a></li>
-    <li><a href="#">COEN 174</a></li>
-  </ul>
-</div>
-<br>
-<div class="btn-group">
-  <div class="btn-group" role="group">
-    <button type="button" class="btn btn-default">Get listed</button>
+
+<body onload="registerEvents()">
+  <div class="jumbotron">
+    <h1>Santa Clara University</br><small>Waitlist<br><small>Student portal</small></small></h1>
   </div>
-</div>
+
+  <div class="container-fluid">
+    <form name="Student_Info" action="student_form_check.js" onsubmit="return validateForm()" method="post">
+      
+      <div class="input-group">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+          First Name:<br>
+          <input autofocus type="text" class="form-control" id="first_name" placeholder="First Name" aria-describedby="basic-addon1">
+          <br><br>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+          Last Name:<br>
+          <input type="text" class="form-control" id="last_name" placeholder="Last Name" aria-describedby="basic-addon1">
+          <br><br>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+          Student ID Number:<br>
+          <input type="text" class="form-control" id="ID_number" placeholder="ID number ex: W0XXXXXX" aria-describedby="basic-addon1">
+          <br><br>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+          E-mail Address:<br>
+          <input type="email" class="form-control" id="email" placeholder="username@email.com" aria-describedby="basic-addon1">
+          <br><br>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+          Enter the reason for needing the class<br>
+          <textarea name="reason" form="Student_Info" rows="3"></textarea>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+          <select class="btn btn-default">
+            <option value="#">Coen 12, Section:11234</option>
+            <option value="Coen 160">Coen 160, Section:00299</option>
+            <option value="Coen174">Coen 174, Section:12398</option>
+          </select>
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <input type="submit" id="submit_button" class="btn btn-default">
+        <div>
+      </div>
+    </form>
+  </div>
+ 
+
 </body>
 </html>

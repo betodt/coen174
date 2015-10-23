@@ -1,0 +1,8 @@
+body{
+	width: 90%;
+	margin: auto;
+}
+
+body > div:first-child {
+	padding: 10px;
+}
