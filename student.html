@@ -8,6 +8,7 @@
   <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
   <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="student_form_check.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
   <link rel="stylesheet" type="text/css" href="student_form.css"/>
@@ -28,42 +29,43 @@
   </div>
 
   <div class="container-fluid">
-    <form name="Student_Info" action="student_form_check.js" onsubmit="return validateForm()" method="post">
+    <form name="Student_Info" action="student_form.php" onsubmit="return validateForm(this)" method="post">
       
       <div class="input-group">
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
           First Name:<br>
-          <input autofocus type="text" class="form-control" id="first_name" placeholder="First Name" aria-describedby="basic-addon1">
+          <input autofocus type="text" class="form-control" id="first_name" placeholder="First Name" aria-describedby="basic-addon1" required>
           <br><br>
         </div>
 
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
           Last Name:<br>
-          <input type="text" class="form-control" id="last_name" placeholder="Last Name" aria-describedby="basic-addon1">
+          <input type="text" class="form-control" id="last_name" placeholder="Last Name" aria-describedby="basic-addon1" required>
           <br><br>
         </div>
 
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
           Student ID Number:<br>
-          <input type="text" class="form-control" id="ID_number" placeholder="ID number ex: W0XXXXXX" aria-describedby="basic-addon1">
+          <input type="text" class="form-control" id="ID_number" placeholder="ID number ex: W0XXXXXX" aria-describedby="basic-addon1" required>
           <br><br>
         </div>
 
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
           E-mail Address:<br>
-          <input type="email" class="form-control" id="email" placeholder="username@email.com" aria-describedby="basic-addon1">
+          <input type="email" class="form-control" id="email" placeholder="username@email.com" aria-describedby="basic-addon1" required>
           <br><br>
         </div>
 
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
           Enter the reason for needing the class<br>
-          <textarea name="reason" form="Student_Info" rows="3"></textarea>
+          <textarea name="reason" id="reason" form="Student_Info" rows="3" required></textarea>
         </div>
 
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-          <select class="btn btn-default">
-            <option value="#">Coen 12, Section:11234</option>
-            <option value="Coen 160">Coen 160, Section:00299</option>
+          <select id="classSelect" class="btn btn-default">
+            <option value="default">Select a class</option>
+            <option value="Coen12">Coen 12, Section:11234</option>
+            <option value="Coen160">Coen 160, Section:00299</option>
             <option value="Coen174">Coen 174, Section:12398</option>
           </select>
         </div>
