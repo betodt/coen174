@@ -24,14 +24,29 @@ $schools = $results->data;
     $subjects = $results->data;
 
     foreach($subjects as $subject) {
+<<<<<<< HEAD
+		$subjectid = $subject[0];
+
+		echo "$subjectid\n";
+=======
 		$subjectid = $subject[0]; //qSubjects contains the different subjects in EGR i.e. COEN, ELEN, MECH, etc.
 
 		echo "	$subjectid\n";
+>>>>>>> refs/remotes/betodt/master
 		$args = array('subjectid' => $subjectid, 'term' => $term);
 		$results = $client->__soapCall('qCourses', $args);
 		$courses = $results->data;
 
 		foreach ($courses as $course) {
+<<<<<<< HEAD
+	   		print_r($course);
+	    	$courseid = $course[5];
+
+	    	$args = array('courseid' => $courseid, 'term' => $term);
+	    	$results = $client->__soapCall('qCourse', $args);
+	    	print_r($results);
+		}
+=======
 			if($course[2] == "Graduate Engineering") { continue; } //filters out graduate courses
 
 		    print_r($course); //recursively prints array of course information
@@ -44,6 +59,7 @@ $schools = $results->data;
 		    // print_r($results);
 		}
 		echo "\n";
+>>>>>>> refs/remotes/betodt/master
     }
     echo "\n";
 //}
